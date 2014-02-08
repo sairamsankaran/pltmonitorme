@@ -125,7 +125,41 @@
 
 - (void)PLTDevice:(PLTDevice *)aDevice didUpdateInfo:(PLTInfo *)theInfo
 {
-	NSLog(@"PLTDevice: %@ didUpdateInfo: %@", aDevice, theInfo);
+	//NSLog(@"PLTDevice: %@ didUpdateInfo: %@", aDevice, theInfo);
+    
+    if ([theInfo isKindOfClass:[PLTOrientationTrackingInfo class]]) {
+        PLTEulerAngles eulerAngles = ((PLTOrientationTrackingInfo *)theInfo).eulerAngles;
+        NSLog(@"Euler X = %f", eulerAngles.x);
+        NSLog(@"Euler Y = %f", eulerAngles.y);
+        NSLog(@"Euler Z = %f", eulerAngles.z);
+	}
+	else if ([theInfo isKindOfClass:[PLTWearingStateInfo class]]) {
+        NSLog(@"Device worn: %@", (((PLTWearingStateInfo *)theInfo).isBeingWorn ? @"yes" : @"no"));
+	}
+	else if ([theInfo isKindOfClass:[PLTProximityInfo class]]) {
+		PLTProximityInfo *proximityInfp = (PLTProximityInfo *)theInfo;
+        NSLog(@"Mobile proximity = %@", NSStringFromProximity(proximityInfp.mobileProximity));
+	}
+	else if ([theInfo isKindOfClass:[PLTPedometerInfo class]]) {
+        NSLog(@"Pedometer steps = %@", [NSString stringWithFormat:@"%lu", (unsigned long)((PLTPedometerInfo *)theInfo).steps]);
+	}
+	else if ([theInfo isKindOfClass:[PLTFreeFallInfo class]]) {
+		BOOL isInFreeFall = ((PLTFreeFallInfo *)theInfo).isInFreeFall;
+        if (isInFreeFall) {
+			NSLog(@"Freefall = %@", (isInFreeFall ? @"yes" : @"no"));
+		}
+	}
+	else if ([theInfo isKindOfClass:[PLTTapsInfo class]]) {
+		PLTTapsInfo *tapsInfo = (PLTTapsInfo *)theInfo;
+		NSString *directionString = NSStringFromTapDirection(tapsInfo.direction);
+        NSLog(@"Taps %@", [NSString stringWithFormat:@"%lu in %@", (unsigned long)tapsInfo.taps, directionString]);
+	}
+	else if ([theInfo isKindOfClass:[PLTMagnetometerCalibrationInfo class]]) {
+        NSLog(@"Magnetometer : %@", (((PLTMagnetometerCalibrationInfo *)theInfo).isCalibrated ? @"yes" : @"no"));
+	}
+	else if ([theInfo isKindOfClass:[PLTGyroscopeCalibrationInfo class]]) {
+        NSLog(@"Gyroscope : %@",(((PLTGyroscopeCalibrationInfo *)theInfo).isCalibrated ? @"yes" : @"no" ));
+	}
 }
 
 @end
