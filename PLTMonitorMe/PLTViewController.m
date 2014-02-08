@@ -13,6 +13,15 @@
 
 @property(nonatomic, strong) PLTDevice *device;
 @property (weak, nonatomic) IBOutlet UILabel *helloWorldLabel;
+@property (weak, nonatomic) IBOutlet UILabel *deviceWornLabel;
+@property (nonatomic) NSUInteger deviceWornStatus; // 1 = worn, 0 = not worn
+@property (nonatomic) NSUInteger pedometerCount;
+@property (nonatomic) NSUInteger pedometerCountHistory;
+@property (weak, nonatomic) IBOutlet UILabel *healthLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *connectedStatusImageView;
+
+
+- (IBAction)alertButtonSender:(id)sender;
 
 @end
 
@@ -20,7 +29,8 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"PLTStatusViewController" bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -40,6 +50,7 @@
 	else {
 		NSLog(@"No available devices.");
         self.helloWorldLabel.text = @"No available devices!";
+        self.deviceWornLabel.text = @"-";
 	}
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newDeviceAvailableNotification:) name:PLTDeviceNewDeviceAvailableNotification object:nil];
@@ -50,6 +61,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"MonitorME";
+    self.deviceWornStatus = 0;
+    self.pedometerCount = 0;
+    self.pedometerCountHistory = 0;
+    UIImage *image = [UIImage imageNamed: @"Dot_Red.png"];
+    [self.connectedStatusImageView setImage:image];
 }
 
 - (void)didReceiveMemoryWarning
@@ -106,7 +122,11 @@
 {
 	NSLog(@"PLTDeviceDidOpenConnection: %@", aDevice);
     self.helloWorldLabel.text = @"Device Connected!";
+    UIImage *image = [UIImage imageNamed: @"Dot_Green.png"];
+    [self.connectedStatusImageView setImage:image];
+    self.deviceWornLabel.text = @"Yes";
     self.helloWorldLabel.textColor = [UIColor greenColor];
+    self.deviceWornLabel.textColor = [UIColor greenColor];
     
     [self subscribeToInfo];
 }
@@ -122,7 +142,11 @@
 	NSLog(@"PLTDeviceDidCloseConnection: %@", aDevice);
 	self.device = nil;
     self.helloWorldLabel.text = @"Device Disconnected!";
+    UIImage *image = [UIImage imageNamed: @"Dot_Red.png"];
+    [self.connectedStatusImageView setImage:image];
+    self.deviceWornLabel.text = @"No";
     self.helloWorldLabel.textColor = [UIColor redColor];
+    self.deviceWornLabel.textColor = [UIColor redColor];
 }
 
 #pragma mark - PLTDeviceInfoObserver
@@ -133,12 +157,21 @@
     
     if ([theInfo isKindOfClass:[PLTOrientationTrackingInfo class]]) {
         PLTEulerAngles eulerAngles = ((PLTOrientationTrackingInfo *)theInfo).eulerAngles;
-        NSLog(@"Euler X = %f", eulerAngles.x);
-        NSLog(@"Euler Y = %f", eulerAngles.y);
-        NSLog(@"Euler Z = %f", eulerAngles.z);
+        //NSLog(@"Euler X = %f", eulerAngles.x);
+        //NSLog(@"Euler Y = %f", eulerAngles.y);
+        //NSLog(@"Euler Z = %f", eulerAngles.z);
 	}
 	else if ([theInfo isKindOfClass:[PLTWearingStateInfo class]]) {
         NSLog(@"Device worn: %@", (((PLTWearingStateInfo *)theInfo).isBeingWorn ? @"yes" : @"no"));
+        self.deviceWornLabel.text = (((PLTWearingStateInfo *)theInfo).isBeingWorn ? @"Yes" : @"No");
+        if ([self.deviceWornLabel.text isEqualToString:@"Yes"]) {
+            self.deviceWornStatus = 1;
+            self.deviceWornLabel.textColor = [UIColor greenColor];
+        }
+        if ([self.deviceWornLabel.text isEqualToString:@"No"]) {
+            self.deviceWornStatus = 0;
+            self.deviceWornLabel.textColor = [UIColor redColor];
+        }
 	}
 	else if ([theInfo isKindOfClass:[PLTProximityInfo class]]) {
 		PLTProximityInfo *proximityInfp = (PLTProximityInfo *)theInfo;
@@ -146,11 +179,18 @@
 	}
 	else if ([theInfo isKindOfClass:[PLTPedometerInfo class]]) {
         NSLog(@"Pedometer steps = %@", [NSString stringWithFormat:@"%lu", (unsigned long)((PLTPedometerInfo *)theInfo).steps]);
+        self.pedometerCount = (unsigned long)((PLTPedometerInfo *)theInfo).steps;
+        self.healthLabel.text = [NSString stringWithFormat:@"%d", (int)((self.pedometerCount - self.pedometerCountHistory)*0.5)];
+        NSLog(@"health = %@", self.healthLabel.text);
 	}
 	else if ([theInfo isKindOfClass:[PLTFreeFallInfo class]]) {
 		BOOL isInFreeFall = ((PLTFreeFallInfo *)theInfo).isInFreeFall;
         if (isInFreeFall) {
 			NSLog(@"Freefall = %@", (isInFreeFall ? @"yes" : @"no"));
+            if (self.deviceWornStatus == 1) {
+                self.healthLabel.text = @"0";
+                self.pedometerCountHistory = self.pedometerCount;
+            }
 		}
 	}
 	else if ([theInfo isKindOfClass:[PLTTapsInfo class]]) {
@@ -159,11 +199,18 @@
         NSLog(@"Taps %@", [NSString stringWithFormat:@"%lu in %@", (unsigned long)tapsInfo.taps, directionString]);
 	}
 	else if ([theInfo isKindOfClass:[PLTMagnetometerCalibrationInfo class]]) {
-        NSLog(@"Magnetometer : %@", (((PLTMagnetometerCalibrationInfo *)theInfo).isCalibrated ? @"yes" : @"no"));
+        //NSLog(@"Magnetometer : %@", (((PLTMagnetometerCalibrationInfo *)theInfo).isCalibrated ? @"yes" : @"no"));
 	}
 	else if ([theInfo isKindOfClass:[PLTGyroscopeCalibrationInfo class]]) {
-        NSLog(@"Gyroscope : %@",(((PLTGyroscopeCalibrationInfo *)theInfo).isCalibrated ? @"yes" : @"no" ));
+        //NSLog(@"Gyroscope : %@",(((PLTGyroscopeCalibrationInfo *)theInfo).isCalibrated ? @"yes" : @"no" ));
 	}
 }
 
+
+- (IBAction)alertButtonSender:(id)sender {
+    NSString *phoneNumber = @"1-408-203-5769"; // dynamically assigned
+    NSString *phoneURLString = [NSString stringWithFormat:@"tel:%@", phoneNumber];
+    NSURL *phoneURL = [NSURL URLWithString:phoneURLString];
+    [[UIApplication sharedApplication] openURL:phoneURL];
+}
 @end
