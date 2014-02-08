@@ -39,6 +39,7 @@
 	}
 	else {
 		NSLog(@"No available devices.");
+        self.helloWorldLabel.text = @"No available devices!";
 	}
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newDeviceAvailableNotification:) name:PLTDeviceNewDeviceAvailableNotification object:nil];
@@ -48,6 +49,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = @"MonitorME";
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,7 +68,6 @@
 		self.device = notification.userInfo[PLTDeviceNewDeviceNotificationKey];
 		self.device.connectionDelegate = self;
 		[self.device openConnection];
-//        self.helloWorldLabel.text = @"Device Connected!";
 	}
     
 }
@@ -105,6 +106,7 @@
 {
 	NSLog(@"PLTDeviceDidOpenConnection: %@", aDevice);
     self.helloWorldLabel.text = @"Device Connected!";
+    self.helloWorldLabel.textColor = [UIColor greenColor];
     
     [self subscribeToInfo];
 }
@@ -119,6 +121,8 @@
 {
 	NSLog(@"PLTDeviceDidCloseConnection: %@", aDevice);
 	self.device = nil;
+    self.helloWorldLabel.text = @"Device Disconnected!";
+    self.helloWorldLabel.textColor = [UIColor redColor];
 }
 
 #pragma mark - PLTDeviceInfoObserver

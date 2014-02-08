@@ -17,6 +17,7 @@
     // Override point for customization after application launch.
     PLTViewController *pltvc = [[PLTViewController alloc] init];
     UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:pltvc];
+
     self.window.rootViewController = nvc;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
