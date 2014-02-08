@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PLTViewController">
             <connections>
+                <outlet property="helloWorldLabel" destination="GMW-Qu-ne7" id="biC-e4-S2k"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>

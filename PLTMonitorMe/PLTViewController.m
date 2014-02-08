@@ -12,6 +12,7 @@
 @interface PLTViewController () <PLTDeviceConnectionDelegate, PLTDeviceInfoObserver>
 
 @property(nonatomic, strong) PLTDevice *device;
+@property (weak, nonatomic) IBOutlet UILabel *helloWorldLabel;
 
 @end
 
@@ -65,7 +66,9 @@
 		self.device = notification.userInfo[PLTDeviceNewDeviceNotificationKey];
 		self.device.connectionDelegate = self;
 		[self.device openConnection];
+//        self.helloWorldLabel.text = @"Device Connected!";
 	}
+    
 }
 
 - (void)subscribeToInfo
@@ -101,6 +104,7 @@
 - (void)PLTDeviceDidOpenConnection:(PLTDevice *)aDevice
 {
 	NSLog(@"PLTDeviceDidOpenConnection: %@", aDevice);
+    self.helloWorldLabel.text = @"Device Connected!";
     
     [self subscribeToInfo];
 }
