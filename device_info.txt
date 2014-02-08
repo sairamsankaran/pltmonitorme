@@ -1,0 +1,17 @@
+PLTDevice: <PLTDevice: 0x15e6bee0> {
+	isConnectionOpen: YES
+	name: Concept1
+	model: Legend
+	serialNumber: 62181bfedcb15247bab041c05a1ec58c
+	fwMajorVersion: 2
+	fwMinorVersion: 8
+} didUpdateInfo: <PLTOrientationTrackingInfo: 0x15ea09a0> {
+	requestType: 0
+	timestamp: 2014-02-08 19:52:27 +0000
+	eulerAngles: { -80.433278, 4.198845, 99.095980 }
+	quaternion: { 0.513123, 0.509094, 0.565308, -0.397339 }
+	rawEulerAngles: { -80.433278, 4.198845, 99.095980 }
+	rawQuaternion: { 0.513123, 0.509094, 0.565308, -0.397339 }
+	referenceEulerAngles: { -0.000000, 0.000000, -0.000000 }
+	referenceQuaternion: { 1.000000, 0.000000, 0.000000, 0.000000 }
+}
