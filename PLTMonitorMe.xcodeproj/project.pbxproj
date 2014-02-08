@@ -98,6 +98,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F854E43818A6B2E40044AB0F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		F86FE75F18A6047E00DBC505 = {
 			isa = PBXGroup;
 			children = (
@@ -134,12 +141,12 @@
 			children = (
 				F86FE77A18A6047E00DBC505 /* AppDelegate.h */,
 				F86FE77B18A6047E00DBC505 /* AppDelegate.m */,
-				F86FE77D18A6047E00DBC505 /* Images.xcassets */,
-				F8C5871F18A60A4300B563B2 /* PLTDevice */,
-				F86FE77218A6047E00DBC505 /* Supporting Files */,
 				F8C5873318A60BE200B563B2 /* PLTViewController.h */,
 				F8C5873418A60BE200B563B2 /* PLTViewController.m */,
 				F8C5873518A60BE200B563B2 /* PLTViewController.xib */,
+				F86FE77D18A6047E00DBC505 /* Images.xcassets */,
+				F8C5871F18A60A4300B563B2 /* PLTDevice */,
+				F86FE77218A6047E00DBC505 /* Supporting Files */,
 			);
 			path = PLTMonitorMe;
 			sourceTree = "<group>";
@@ -147,6 +154,7 @@
 		F86FE77218A6047E00DBC505 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F854E43818A6B2E40044AB0F /* Images */,
 				F86FE77318A6047E00DBC505 /* PLTMonitorMe-Info.plist */,
 				F86FE77418A6047E00DBC505 /* InfoPlist.strings */,
 				F86FE77718A6047E00DBC505 /* main.m */,
