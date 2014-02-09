@@ -14,6 +14,12 @@
 		F854E44318A6E47A0044AB0F /* Logo_Transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = F854E43D18A6E47A0044AB0F /* Logo_Transparent.png */; };
 		F854E44418A6E47A0044AB0F /* Logo_White.png in Resources */ = {isa = PBXBuildFile; fileRef = F854E43E18A6E47A0044AB0F /* Logo_White.png */; };
 		F854E44618A6E4CF0044AB0F /* PLTStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F854E44518A6E4CF0044AB0F /* PLTStatusViewController.xib */; };
+		F854E44918A6FFD80044AB0F /* PLTDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F854E44718A6FFD80044AB0F /* PLTDetailsViewController.xib */; };
+		F854E44A18A6FFD80044AB0F /* PLTReportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F854E44818A6FFD80044AB0F /* PLTReportsViewController.xib */; };
+		F854E44D18A700240044AB0F /* Falls_Transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = F854E44B18A700240044AB0F /* Falls_Transparent.png */; };
+		F854E44E18A700240044AB0F /* Pedometer_Transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = F854E44C18A700240044AB0F /* Pedometer_Transparent.png */; };
+		F854E45118A704BA0044AB0F /* PLTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F854E45018A704BA0044AB0F /* PLTDetailsViewController.m */; };
+		F854E45418A704DC0044AB0F /* PLTReportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F854E45318A704DC0044AB0F /* PLTReportsViewController.m */; };
 		F86FE76C18A6047E00DBC505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86FE76B18A6047E00DBC505 /* Foundation.framework */; };
 		F86FE76E18A6047E00DBC505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86FE76D18A6047E00DBC505 /* CoreGraphics.framework */; };
 		F86FE77018A6047E00DBC505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86FE76F18A6047E00DBC505 /* UIKit.framework */; };
@@ -50,6 +56,14 @@
 		F854E43D18A6E47A0044AB0F /* Logo_Transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_Transparent.png; sourceTree = "<group>"; };
 		F854E43E18A6E47A0044AB0F /* Logo_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_White.png; sourceTree = "<group>"; };
 		F854E44518A6E4CF0044AB0F /* PLTStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PLTStatusViewController.xib; sourceTree = "<group>"; };
+		F854E44718A6FFD80044AB0F /* PLTDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PLTDetailsViewController.xib; sourceTree = "<group>"; };
+		F854E44818A6FFD80044AB0F /* PLTReportsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PLTReportsViewController.xib; sourceTree = "<group>"; };
+		F854E44B18A700240044AB0F /* Falls_Transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Falls_Transparent.png; sourceTree = "<group>"; };
+		F854E44C18A700240044AB0F /* Pedometer_Transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pedometer_Transparent.png; sourceTree = "<group>"; };
+		F854E44F18A704BA0044AB0F /* PLTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLTDetailsViewController.h; sourceTree = "<group>"; };
+		F854E45018A704BA0044AB0F /* PLTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLTDetailsViewController.m; sourceTree = "<group>"; };
+		F854E45218A704DC0044AB0F /* PLTReportsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLTReportsViewController.h; sourceTree = "<group>"; };
+		F854E45318A704DC0044AB0F /* PLTReportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLTReportsViewController.m; sourceTree = "<group>"; };
 		F86FE76818A6047E00DBC505 /* PLTMonitorMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLTMonitorMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86FE76B18A6047E00DBC505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F86FE76D18A6047E00DBC505 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -115,6 +129,8 @@
 		F854E43818A6B2E40044AB0F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F854E44B18A700240044AB0F /* Falls_Transparent.png */,
+				F854E44C18A700240044AB0F /* Pedometer_Transparent.png */,
 				F854E43918A6E47A0044AB0F /* Dot_Green.png */,
 				F854E43A18A6E47A0044AB0F /* Dot_Red.png */,
 				F854E43B18A6E47A0044AB0F /* Icon_Blue.png */,
@@ -165,6 +181,12 @@
 				F8C5873418A60BE200B563B2 /* PLTViewController.m */,
 				F8C5873518A60BE200B563B2 /* PLTViewController.xib */,
 				F854E44518A6E4CF0044AB0F /* PLTStatusViewController.xib */,
+				F854E44718A6FFD80044AB0F /* PLTDetailsViewController.xib */,
+				F854E44818A6FFD80044AB0F /* PLTReportsViewController.xib */,
+				F854E44F18A704BA0044AB0F /* PLTDetailsViewController.h */,
+				F854E45018A704BA0044AB0F /* PLTDetailsViewController.m */,
+				F854E45218A704DC0044AB0F /* PLTReportsViewController.h */,
+				F854E45318A704DC0044AB0F /* PLTReportsViewController.m */,
 				F86FE77D18A6047E00DBC505 /* Images.xcassets */,
 				F8C5871F18A60A4300B563B2 /* PLTDevice */,
 				F86FE77218A6047E00DBC505 /* Supporting Files */,
@@ -314,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F854E44D18A700240044AB0F /* Falls_Transparent.png in Resources */,
 				F854E44118A6E47A0044AB0F /* Icon_Blue.png in Resources */,
 				F854E44318A6E47A0044AB0F /* Logo_Transparent.png in Resources */,
 				F86FE77618A6047E00DBC505 /* InfoPlist.strings in Resources */,
@@ -321,8 +344,11 @@
 				F8C5873718A60BE200B563B2 /* PLTViewController.xib in Resources */,
 				F854E44618A6E4CF0044AB0F /* PLTStatusViewController.xib in Resources */,
 				F86FE77E18A6047E00DBC505 /* Images.xcassets in Resources */,
+				F854E44A18A6FFD80044AB0F /* PLTReportsViewController.xib in Resources */,
+				F854E44918A6FFD80044AB0F /* PLTDetailsViewController.xib in Resources */,
 				F854E44018A6E47A0044AB0F /* Dot_Red.png in Resources */,
 				F854E44218A6E47A0044AB0F /* Icon_White.png in Resources */,
+				F854E44E18A700240044AB0F /* Pedometer_Transparent.png in Resources */,
 				F854E43F18A6E47A0044AB0F /* Dot_Green.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,7 +369,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F86FE77C18A6047E00DBC505 /* AppDelegate.m in Sources */,
+				F854E45418A704DC0044AB0F /* PLTReportsViewController.m in Sources */,
 				F86FE77818A6047E00DBC505 /* main.m in Sources */,
+				F854E45118A704BA0044AB0F /* PLTDetailsViewController.m in Sources */,
 				F8C5873618A60BE200B563B2 /* PLTViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
