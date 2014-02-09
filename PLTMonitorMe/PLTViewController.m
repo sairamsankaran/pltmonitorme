@@ -10,6 +10,7 @@
 #import "PLTDevice.h"
 #import "PLTReportsViewController.h"
 #import "PLTDetailsViewController.h"
+#import "PLTSettingsViewController.h"
 
 @interface PLTViewController () <PLTDeviceConnectionDelegate, PLTDeviceInfoObserver>
 
@@ -109,6 +110,7 @@
 {
     NSLog(@"Details Button Tapped");
     PLTDetailsViewController *detailsVC = [[PLTDetailsViewController alloc] init];
+    [detailsVC setStepsLabelText:self.healthLabel.text];
     [[self navigationController] pushViewController:detailsVC
                                            animated:YES];
 }
@@ -116,6 +118,9 @@
 - (void)onSettingsButton
 {
     NSLog(@"Settings Button Tapped");
+    PLTSettingsViewController *settingsVC = [[PLTSettingsViewController alloc] init];
+    [[self navigationController] pushViewController:settingsVC
+                                           animated:YES];
 }
 
 - (void)subscribeToInfo
