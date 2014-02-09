@@ -24,6 +24,7 @@
 		F854E45918A709D10044AB0F /* PLTSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F854E45718A709D10044AB0F /* PLTSettingsViewController.xib */; };
 		F854E45D18A7130A0044AB0F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F854E45C18A7130A0044AB0F /* Default@2x.png */; };
 		F854E45F18A7142D0044AB0F /* Icon_Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = F854E45E18A7142D0044AB0F /* Icon_Blue.png */; };
+		F854E46218A71D850044AB0F /* PLTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F854E46118A71D850044AB0F /* PLTModel.m */; };
 		F86FE76C18A6047E00DBC505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86FE76B18A6047E00DBC505 /* Foundation.framework */; };
 		F86FE76E18A6047E00DBC505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86FE76D18A6047E00DBC505 /* CoreGraphics.framework */; };
 		F86FE77018A6047E00DBC505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86FE76F18A6047E00DBC505 /* UIKit.framework */; };
@@ -73,6 +74,8 @@
 		F854E45718A709D10044AB0F /* PLTSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PLTSettingsViewController.xib; sourceTree = "<group>"; };
 		F854E45C18A7130A0044AB0F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F854E45E18A7142D0044AB0F /* Icon_Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Blue.png; sourceTree = "<group>"; };
+		F854E46018A71D850044AB0F /* PLTModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLTModel.h; sourceTree = "<group>"; };
+		F854E46118A71D850044AB0F /* PLTModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLTModel.m; sourceTree = "<group>"; };
 		F86FE76818A6047E00DBC505 /* PLTMonitorMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLTMonitorMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86FE76B18A6047E00DBC505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F86FE76D18A6047E00DBC505 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -188,6 +191,8 @@
 			children = (
 				F86FE77A18A6047E00DBC505 /* AppDelegate.h */,
 				F86FE77B18A6047E00DBC505 /* AppDelegate.m */,
+				F854E46018A71D850044AB0F /* PLTModel.h */,
+				F854E46118A71D850044AB0F /* PLTModel.m */,
 				F8C5873318A60BE200B563B2 /* PLTViewController.h */,
 				F8C5873418A60BE200B563B2 /* PLTViewController.m */,
 				F8C5873518A60BE200B563B2 /* PLTViewController.xib */,
@@ -390,6 +395,7 @@
 				F854E45818A709D10044AB0F /* PLTSettingsViewController.m in Sources */,
 				F86FE77818A6047E00DBC505 /* main.m in Sources */,
 				F854E45118A704BA0044AB0F /* PLTDetailsViewController.m in Sources */,
+				F854E46218A71D850044AB0F /* PLTModel.m in Sources */,
 				F8C5873618A60BE200B563B2 /* PLTViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

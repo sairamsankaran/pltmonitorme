@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *stepsLabel;
 @property (strong, nonatomic) NSString *stepsLabelText;
+@property (weak, nonatomic) IBOutlet UILabel *headGestureLabel;
+@property (strong, nonatomic) NSString *headGestureLabelText;
 
 @end

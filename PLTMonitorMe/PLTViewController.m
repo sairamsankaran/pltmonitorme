@@ -11,9 +11,16 @@
 #import "PLTReportsViewController.h"
 #import "PLTDetailsViewController.h"
 #import "PLTSettingsViewController.h"
+#import "Math.h"
+#import "PLTModel.h"
 
 @interface PLTViewController () <PLTDeviceConnectionDelegate, PLTDeviceInfoObserver>
 
+{
+    CGFloat eulerXHistory;
+    CGFloat eulerYHistory;
+
+}
 @property(nonatomic, strong) PLTDevice *device;
 @property (weak, nonatomic) IBOutlet UILabel *helloWorldLabel;
 @property (weak, nonatomic) IBOutlet UILabel *deviceWornLabel;
@@ -22,6 +29,8 @@
 @property (nonatomic) NSUInteger pedometerCountHistory;
 @property (weak, nonatomic) IBOutlet UILabel *healthLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *connectedStatusImageView;
+@property (strong, nonatomic) NSString *headNodYes;
+@property (strong, nonatomic) NSString *headNodNo;
 
 
 - (IBAction)alertButtonSender:(id)sender;
@@ -65,7 +74,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"MonitorME";
     self.deviceWornStatus = 0;
-    self.pedometerCount = 0;
+    self.pedometerCount = [[PLTModel instance] pedometerCount];
     self.pedometerCountHistory = 0;
     UIImage *image = [UIImage imageNamed: @"Dot_Red.png"];
     [self.connectedStatusImageView setImage:image];
@@ -195,6 +204,20 @@
         //NSLog(@"Euler X = %f", eulerAngles.x);
         //NSLog(@"Euler Y = %f", eulerAngles.y);
         //NSLog(@"Euler Z = %f", eulerAngles.z);
+        CGFloat changeInX = fabs(eulerXHistory - eulerAngles.x);
+        //NSLog(@"Change in X = %f", changeInX);
+        if (changeInX > 10) {
+            NSLog(@"Head nod no");
+            [[PLTModel instance] setHeadNodYN:@"No"];
+        }
+        CGFloat changeInY = fabs(eulerYHistory - eulerAngles.y);
+        //NSLog(@"Change in Y = %f", changeInY);
+        if (changeInY > 10) {
+            NSLog(@"Head nod yes");
+            [[PLTModel instance] setHeadNodYN:@"Yes"];
+        }
+        eulerXHistory = eulerAngles.x;
+        eulerYHistory = eulerAngles.y;
 	}
 	else if ([theInfo isKindOfClass:[PLTWearingStateInfo class]]) {
         NSLog(@"Device worn: %@", (((PLTWearingStateInfo *)theInfo).isBeingWorn ? @"yes" : @"no"));
@@ -217,6 +240,7 @@
         self.pedometerCount = (unsigned long)((PLTPedometerInfo *)theInfo).steps;
         self.healthLabel.text = [NSString stringWithFormat:@"%d", (int)((self.pedometerCount - self.pedometerCountHistory)*0.5)];
         //NSLog(@"health = %@", self.healthLabel.text);
+        [[PLTModel instance] setPedCount:self.pedometerCount];
 	}
 	else if ([theInfo isKindOfClass:[PLTFreeFallInfo class]]) {
 		BOOL isInFreeFall = ((PLTFreeFallInfo *)theInfo).isInFreeFall;
