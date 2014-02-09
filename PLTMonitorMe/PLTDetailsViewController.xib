@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PLTDetailsViewController">
             <connections>
+                <outlet property="headGestureLabel" destination="8Sf-SR-Fpm" id="nzK-q4-gwB"/>
                 <outlet property="stepsLabel" destination="NaD-J4-8hJ" id="lp2-Jr-kj9"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
