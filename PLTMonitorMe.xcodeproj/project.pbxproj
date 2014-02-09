@@ -22,6 +22,8 @@
 		F854E45418A704DC0044AB0F /* PLTReportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F854E45318A704DC0044AB0F /* PLTReportsViewController.m */; };
 		F854E45818A709D10044AB0F /* PLTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F854E45618A709D10044AB0F /* PLTSettingsViewController.m */; };
 		F854E45918A709D10044AB0F /* PLTSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F854E45718A709D10044AB0F /* PLTSettingsViewController.xib */; };
+		F854E45D18A7130A0044AB0F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F854E45C18A7130A0044AB0F /* Default@2x.png */; };
+		F854E45F18A7142D0044AB0F /* Icon_Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = F854E45E18A7142D0044AB0F /* Icon_Blue.png */; };
 		F86FE76C18A6047E00DBC505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86FE76B18A6047E00DBC505 /* Foundation.framework */; };
 		F86FE76E18A6047E00DBC505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86FE76D18A6047E00DBC505 /* CoreGraphics.framework */; };
 		F86FE77018A6047E00DBC505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86FE76F18A6047E00DBC505 /* UIKit.framework */; };
@@ -69,6 +71,8 @@
 		F854E45518A709D10044AB0F /* PLTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLTSettingsViewController.h; sourceTree = "<group>"; };
 		F854E45618A709D10044AB0F /* PLTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLTSettingsViewController.m; sourceTree = "<group>"; };
 		F854E45718A709D10044AB0F /* PLTSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PLTSettingsViewController.xib; sourceTree = "<group>"; };
+		F854E45C18A7130A0044AB0F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		F854E45E18A7142D0044AB0F /* Icon_Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Blue.png; sourceTree = "<group>"; };
 		F86FE76818A6047E00DBC505 /* PLTMonitorMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLTMonitorMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86FE76B18A6047E00DBC505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F86FE76D18A6047E00DBC505 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -149,6 +153,8 @@
 		F86FE75F18A6047E00DBC505 = {
 			isa = PBXGroup;
 			children = (
+				F854E45E18A7142D0044AB0F /* Icon_Blue.png */,
+				F854E45C18A7130A0044AB0F /* Default@2x.png */,
 				F86FE77118A6047E00DBC505 /* PLTMonitorMe */,
 				F86FE78A18A6047F00DBC505 /* PLTMonitorMeTests */,
 				F86FE76A18A6047E00DBC505 /* Frameworks */,
@@ -344,6 +350,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F854E45D18A7130A0044AB0F /* Default@2x.png in Resources */,
+				F854E45F18A7142D0044AB0F /* Icon_Blue.png in Resources */,
 				F854E44D18A700240044AB0F /* Falls_Transparent.png in Resources */,
 				F854E44118A6E47A0044AB0F /* Icon_Blue.png in Resources */,
 				F854E44318A6E47A0044AB0F /* Logo_Transparent.png in Resources */,
