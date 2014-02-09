@@ -8,6 +8,8 @@
 
 #import "PLTViewController.h"
 #import "PLTDevice.h"
+#import "PLTReportsViewController.h"
+#import "PLTDetailsViewController.h"
 
 @interface PLTViewController () <PLTDeviceConnectionDelegate, PLTDeviceInfoObserver>
 
@@ -66,6 +68,13 @@
     self.pedometerCountHistory = 0;
     UIImage *image = [UIImage imageNamed: @"Dot_Red.png"];
     [self.connectedStatusImageView setImage:image];
+    
+     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Details" style:UIBarButtonItemStylePlain target:self action:@selector(onDetailsButton)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
+
+    self.healthLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(healthLabelTap)];
+    [self.healthLabel addGestureRecognizer:tapGesture];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,6 +95,27 @@
 		[self.device openConnection];
 	}
     
+}
+
+-(void)healthLabelTap
+{
+    NSLog(@"Health Label Tapped");
+    PLTReportsViewController *reportsVC = [[PLTReportsViewController alloc] init];
+    [[self navigationController] pushViewController:reportsVC
+                                           animated:YES];
+}
+
+- (void)onDetailsButton
+{
+    NSLog(@"Details Button Tapped");
+    PLTDetailsViewController *detailsVC = [[PLTDetailsViewController alloc] init];
+    [[self navigationController] pushViewController:detailsVC
+                                           animated:YES];
+}
+
+- (void)onSettingsButton
+{
+    NSLog(@"Settings Button Tapped");
 }
 
 - (void)subscribeToInfo
