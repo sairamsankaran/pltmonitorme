@@ -210,18 +210,18 @@
 	}
 	else if ([theInfo isKindOfClass:[PLTProximityInfo class]]) {
 		PLTProximityInfo *proximityInfp = (PLTProximityInfo *)theInfo;
-        NSLog(@"Mobile proximity = %@", NSStringFromProximity(proximityInfp.mobileProximity));
+        //NSLog(@"Mobile proximity = %@", NSStringFromProximity(proximityInfp.mobileProximity));
 	}
 	else if ([theInfo isKindOfClass:[PLTPedometerInfo class]]) {
-        NSLog(@"Pedometer steps = %@", [NSString stringWithFormat:@"%lu", (unsigned long)((PLTPedometerInfo *)theInfo).steps]);
+        //NSLog(@"Pedometer steps = %@", [NSString stringWithFormat:@"%lu", (unsigned long)((PLTPedometerInfo *)theInfo).steps]);
         self.pedometerCount = (unsigned long)((PLTPedometerInfo *)theInfo).steps;
         self.healthLabel.text = [NSString stringWithFormat:@"%d", (int)((self.pedometerCount - self.pedometerCountHistory)*0.5)];
-        NSLog(@"health = %@", self.healthLabel.text);
+        //NSLog(@"health = %@", self.healthLabel.text);
 	}
 	else if ([theInfo isKindOfClass:[PLTFreeFallInfo class]]) {
 		BOOL isInFreeFall = ((PLTFreeFallInfo *)theInfo).isInFreeFall;
         if (isInFreeFall) {
-			NSLog(@"Freefall = %@", (isInFreeFall ? @"yes" : @"no"));
+			//NSLog(@"Freefall = %@", (isInFreeFall ? @"yes" : @"no"));
             if (self.deviceWornStatus == 1) {
                 self.healthLabel.text = @"0";
                 self.pedometerCountHistory = self.pedometerCount;
@@ -231,7 +231,12 @@
 	else if ([theInfo isKindOfClass:[PLTTapsInfo class]]) {
 		PLTTapsInfo *tapsInfo = (PLTTapsInfo *)theInfo;
 		NSString *directionString = NSStringFromTapDirection(tapsInfo.direction);
-        NSLog(@"Taps %@", [NSString stringWithFormat:@"%lu in %@", (unsigned long)tapsInfo.taps, directionString]);
+        NSLog(@"Taps Info : %@", tapsInfo);
+        if (tapsInfo.taps == 1) {
+            [self callEmergency];
+        }
+        
+        //NSLog(@"Taps %@", [NSString stringWithFormat:@"%lu in %@", (unsigned long)tapsInfo.taps, directionString]);
 	}
 	else if ([theInfo isKindOfClass:[PLTMagnetometerCalibrationInfo class]]) {
         //NSLog(@"Magnetometer : %@", (((PLTMagnetometerCalibrationInfo *)theInfo).isCalibrated ? @"yes" : @"no"));
@@ -243,9 +248,19 @@
 
 
 - (IBAction)alertButtonSender:(id)sender {
+    [self callEmergency];
+//    NSString *phoneNumber = @"1-408-203-5769"; // dynamically assigned
+//    NSString *phoneURLString = [NSString stringWithFormat:@"tel:%@", phoneNumber];
+//    NSURL *phoneURL = [NSURL URLWithString:phoneURLString];
+//    [[UIApplication sharedApplication] openURL:phoneURL];
+}
+
+- (void) callEmergency
+{
     NSString *phoneNumber = @"1-408-203-5769"; // dynamically assigned
     NSString *phoneURLString = [NSString stringWithFormat:@"tel:%@", phoneNumber];
     NSURL *phoneURL = [NSURL URLWithString:phoneURLString];
     [[UIApplication sharedApplication] openURL:phoneURL];
 }
+
 @end
