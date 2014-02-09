@@ -10,4 +10,7 @@
 
 @interface PLTDetailsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *stepsLabel;
+@property (strong, nonatomic) NSString *stepsLabelText;
+
 @end

@@ -1,18 +1,18 @@
 //
-//  PLTDetailsViewController.m
+//  PLTMainSettingsViewController.m
 //  PLTMonitorMe
 //
-//  Created by Sairam Sankaran on 2/8/14.
+//  Created by user on 2/8/14.
 //  Copyright (c) 2014 Sairam Sankaran. All rights reserved.
 //
 
-#import "PLTDetailsViewController.h"
+#import "PLTSettingsViewController.h"
 
-@interface PLTDetailsViewController ()
+@interface PLTSettingsViewController ()
 
 @end
 
-@implementation PLTDetailsViewController
+@implementation PLTSettingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,16 +23,10 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.stepsLabel.text = self.stepsLabelText;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
